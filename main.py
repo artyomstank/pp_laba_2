@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 import datetime
 
-#goool
+
+# goool
 class DayPlannerApp:
     """Класс для создания приложения планирования дня."""
 
@@ -24,15 +25,25 @@ class DayPlannerApp:
         self.clear_window()
 
         # Текст приветствия
-        welcome_label = tk.Label(self.root, text="Добро пожаловать в Планировщик дня!", font=("Arial", 16))
+        welcome_label = tk.Label(self.root, text="Добро пожаловать в Планировщик дня!", font=("Times", 20))
         welcome_label.pack(pady=10)
 
         # Кнопки для перехода к функциональным возможностям
-        add_task_button = tk.Button(self.root, text="Добавить задачу", command=self.add_task_screen, width=50,height=3)
-        add_task_button.pack(pady=5)
+        add_task_button = tk.Button(
+            self.root,
+            text="Добавить задачу",
+            command=self.add_task_screen,
+            width=30, height=2, font=("Times", 14),
+            bg="green",
+            fg="white"  # Устанавливаем белый цвет текста
+        )
+        add_task_button.pack(pady=20)
 
-        view_tasks_button = tk.Button(self.root, text="Просмотреть задачи", command=self.view_tasks_screen, width=50)
+        view_tasks_button = tk.Button(self.root, text="Просмотреть задачи", command=self.view_tasks_screen, width=30,height=2, font=("Times", 14), bg="grey")
         view_tasks_button.pack(pady=5)
+
+        go_git_button = tk.Button(self.root, text="GitHub автора", command=self.go_git, width=38, height=1,font=("Roman", 12), bg="grey")
+        go_git_button.pack(pady=5)
 
     def clear_window(self):
         """Очистка всех виджетов окна."""
@@ -104,6 +115,12 @@ class DayPlannerApp:
                 tk.Label(self.root, text=task_info, justify="left").pack(pady=2)
 
         # Кнопка для возврата в главное меню
+        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20)
+        back_button.pack(pady=10)
+
+    def go_git(self):
+        self.clear_window()
+        tk.Label(self.root, text="Гит: https://github.com/artyomstank", font=("Arial", 14)).pack(pady=10)
         back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20)
         back_button.pack(pady=10)
 
