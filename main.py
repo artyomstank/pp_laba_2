@@ -11,8 +11,8 @@ class DayPlannerApp:
         """Инициализация главного окна."""
         self.root = root
         self.root.title("ПЛАНИРОВЩИК ДНЯ")
-        self.root.geometry("500x400")  # Устанавливаем размер окна побольше
-
+        self.root.geometry("500x400")
+        self.root.configure(bg="beige")
         # Список задач
         self.tasks = []
 
@@ -39,10 +39,12 @@ class DayPlannerApp:
         )
         add_task_button.pack(pady=20)
 
-        view_tasks_button = tk.Button(self.root, text="Просмотреть задачи", command=self.view_tasks_screen, width=30,height=2, font=("Times", 14), bg="grey")
+        view_tasks_button = tk.Button(self.root, text="Просмотреть задачи", command=self.view_tasks_screen, width=34,
+                                      height=2, font=("Roman", 14), bg="grey")
         view_tasks_button.pack(pady=5)
 
-        go_git_button = tk.Button(self.root, text="GitHub автора", command=self.go_git, width=38, height=1,font=("Roman", 12), bg="grey")
+        go_git_button = tk.Button(self.root, text="GitHub автора", command=self.go_git, width=38, height=1,
+                                  font=("Roman", 12), bg="grey")
         go_git_button.pack(pady=5)
 
     def clear_window(self):
@@ -55,26 +57,30 @@ class DayPlannerApp:
         self.clear_window()
 
         # Поле для ввода названия задачи
-        tk.Label(self.root, text="Введите название задачи:").pack(pady=5)
+        tk.Label(self.root, text="Введите название задачи:",font=("Times",16)).pack(pady=5)
         self.task_name_entry = tk.Entry(self.root, width=40)
         self.task_name_entry.pack(pady=5)
 
         # Поле для ввода описания задачи
-        tk.Label(self.root, text="Введите описание задачи:").pack(pady=5)
+        tk.Label(self.root, text="Введите описание задачи:",font=("Times",16)).pack(pady=5)
         self.task_description_entry = tk.Entry(self.root, width=40)
         self.task_description_entry.pack(pady=5)
 
         # Поле для ввода даты задачи
-        tk.Label(self.root, text="Введите дату выполнения (ГГГГ-ММ-ДД):").pack(pady=5)
+        tk.Label(self.root, text="Введите дату выполнения",font=("Times",16)).pack(pady=5)
+        tk.Label(self.root, text="(ГГГГ - ММ - ДД):",font=("Times",10)).pack()
+
         self.task_date_entry = tk.Entry(self.root, width=40)
         self.task_date_entry.pack(pady=5)
 
         # Кнопки для добавления задачи и возврата в главное меню
-        save_task_button = tk.Button(self.root, text="Сохранить задачу", command=self.save_task, width=20)
-        save_task_button.pack(pady=5)
+        save_task_button = tk.Button(self.root, text="Сохранить задачу", command=self.save_task, width=20, bg="green",
+                                     fg="white",font=("Times",12))
+        save_task_button.pack(pady=20)
 
-        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20)
-        back_button.pack(pady=5)
+        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20, height=2,
+                                font=("Arial", 12))
+        back_button.place(x=0, y=355)
 
     def save_task(self):
         """Сохранение задачи в список задач."""
@@ -103,10 +109,10 @@ class DayPlannerApp:
         self.clear_window()
 
         # Заголовок экрана
-        tk.Label(self.root, text="Ваши задачи:", font=("Arial", 14)).pack(pady=10)
+        tk.Label(self.root, text="Ваши задачи:", font=("Arial", 20)).pack(pady=10)
 
         if not self.tasks:
-            tk.Label(self.root, text="Нет запланированных задач.").pack()
+            tk.Label(self.root, text="Нет запланированных задач.", font=("Arial", 14)).pack(pady=22)
         else:
             for task in self.tasks:
                 task_info = (f"Задача: {task['Название']}\n"
@@ -115,14 +121,16 @@ class DayPlannerApp:
                 tk.Label(self.root, text=task_info, justify="left").pack(pady=2)
 
         # Кнопка для возврата в главное меню
-        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20)
-        back_button.pack(pady=10)
+        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20, height=2,
+                                font=("Arial", 12))
+        back_button.place(x=0, y=355)
 
     def go_git(self):
         self.clear_window()
         tk.Label(self.root, text="Гит: https://github.com/artyomstank", font=("Arial", 14)).pack(pady=10)
-        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20)
-        back_button.pack(pady=10)
+        back_button = tk.Button(self.root, text="Назад в главное меню", command=self.welcome_screen, width=20, height=2,
+                                font=("Arial", 12))
+        back_button.place(x=0, y=355)
 
 
 # Запуск приложения
