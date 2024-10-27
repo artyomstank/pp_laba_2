@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import datetime
 
-
+#goool
 class DayPlannerApp:
     """Класс для создания приложения планирования дня."""
 
